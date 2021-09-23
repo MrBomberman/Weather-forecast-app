@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -11,10 +12,11 @@ const Input = styled.input`
     }
 `
 
-export default function CityInput(){
+export default function CityInput({setCity}){
+
     return (
         <>
-        Your city<Input placeholder="type your city "></Input>
+        Your city<Input onInput={(e) => setCity(e.target.value)} placeholder="type your city "></Input>
         </>
     )
 }

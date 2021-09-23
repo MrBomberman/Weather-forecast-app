@@ -30,12 +30,11 @@ export default function WeatherForecast(){
     const [city, setCity] = useState('London')
     const [data, setData] = useState(null)
 
-
     useEffect(() => {
 
         fetchData().then(data => setData(data));
 
-    },[])
+    },[data])
 
     console.log(city)
 

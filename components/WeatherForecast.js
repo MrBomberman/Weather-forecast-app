@@ -44,7 +44,7 @@ export default function WeatherForecast(){
                     <CityInput setCity={setCity}/>
                  <CurrentInfo>
                     <CurrentSituation city={city} data={data}/>
-                    <SeveralDays/>
+                    <SeveralDays data={data}/>
                  </CurrentInfo>
             </Container>
     )

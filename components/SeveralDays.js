@@ -5,7 +5,7 @@ const Container = styled.div`
     flex-direction: column;
 `
 
-export default function SeveralDays({data}){
+export default function SeveralDays({data, onChangeActive, activeDay}){
 
     return (
         <>  
@@ -13,7 +13,7 @@ export default function SeveralDays({data}){
         <h4 style={{textAlign: 'center'}}>Temperature</h4>
             <canvas></canvas>
 
-            <SeveralDaysTemperature data={data}/>
+            <SeveralDaysTemperature data={data} onChangeActive={onChangeActive} activeDay={activeDay}/>
         </Container>
         </>
     )

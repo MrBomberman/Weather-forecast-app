@@ -19,7 +19,6 @@ export default function CurrentSituation({data}){
 
     // const [weather, setMainWeather] = useState(null)
 
-
     const mainCurrentWeather = data === null ? 'Loading...' :  data.list[0].weather[0].main;
     const currentHumidity = data === null ? 'Loading...' : data.list[0].main.humidity + '%';
     const currentWind = data === null ? 'Loading...' : data.list[0].wind.speed + 'km/j'

@@ -19,3 +19,8 @@ body {
 * {
   box-sizing: border-box;
 }
+
+
+.active {
+  background-color: red;
+}

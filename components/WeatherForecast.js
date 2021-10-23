@@ -29,22 +29,26 @@ export default function WeatherForecast(){
 
     const [city, setCity] = useState('London')
     const [data, setData] = useState(null)
+    const [activeDay, setActiveDay] = useState(null)
 
     useEffect(() => {
 
         fetchData().then(data => setData(data));
 
-    },[data])
+    },[])
+
 
     console.log(city)
+    console.log(activeDay)
+
 
     return (
             <Container>
                  <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
                     <CityInput setCity={setCity}/>
                  <CurrentInfo>
-                    <CurrentSituation city={city} data={data}/>
-                    <SeveralDays data={data}/>
+                    <CurrentSituation city={city} data={data} activeDay={activeDay}/>
+                    <SeveralDays data={data} onChangeActive={(value) => setActiveDay(value)} activeDay={activeDay}/>
                  </CurrentInfo>
             </Container>
     )

@@ -34,7 +34,7 @@ export default function WeatherForecast(){
     useEffect(() => {
 
         fetchData().then(data => setData(data));
-
+        
     },[])
 
 

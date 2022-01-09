@@ -13,7 +13,7 @@ export default function SeveralDays({data, onChangeActive, activeDay}){
 
     // const tempratureLine = useRef();
 
-    console.log(data.list)
+    console.log(data)
 
     // console.log(tempratureLine.current)
     const chartRef = useRef(null);

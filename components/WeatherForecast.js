@@ -14,7 +14,7 @@ border-radius: 14px;
 box-shadow: -3px -2px 36px -7px rgba(0,0,0,0.75);
 
 @media only screen and (max-width: 820px){
-width: 350px;
+width: 340px;
 }
 `
 const CurrentInfo = styled.div`

@@ -4,9 +4,10 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     > div {
-        padding: 10px;
+        padding: 9px;
         cursor: pointer;
     }
+
 `
 
 const theme = {
@@ -15,19 +16,12 @@ const theme = {
 
 
 
-function FewDaysForecast({index ,data, onChangeActive, activeDay}) {
-    let allDays = []
+function FewDaysForecast({data, onChangeActive, activeDay}) {
 
-    // for(let i = 0; i < 24; i+ 4){
-    //    let arr = formatDayWeather(data.list[i].dt_txt,data.list[i].weather[i].main, data.list[i].main.humidity)
-    //     allDays.push(arr)
-    // }
-    // console.log(allDays)
-
-    let today = data === null ? 'Loading...' : formatDayWeather(data.list[0].dt_txt,data.list[0].weather[0].main, data.list[0].main.humidity);
-    let secondDay = data === null ? 'Loading...' : formatDayWeather(data.list[8].dt_txt,data.list[8].weather[0].main, data.list[8].main.humidity);
-    let thirdDay = data === null ? 'Loading...' : formatDayWeather(data.list[16].dt_txt, data.list[16].weather[0].main, data.list[16].main.humidity);
-    let fourthDay = data === null ? 'Loading...' : formatDayWeather(data.list[24].dt_txt, data.list[24].weather[0].main, data.list[24].main.humidity);
+    let today = formatDayWeather(data.list[0].dt_txt,data.list[0].weather[0].main, data.list[0].main.humidity);
+    let secondDay = formatDayWeather(data.list[8].dt_txt,data.list[8].weather[0].main, data.list[8].main.humidity);
+    let thirdDay = formatDayWeather(data.list[16].dt_txt, data.list[16].weather[0].main, data.list[16].main.humidity);
+    let fourthDay = formatDayWeather(data.list[24].dt_txt, data.list[24].weather[0].main, data.list[24].main.humidity);
 
     function formatDayWeather(date, state, humidity) {
         let arr1 = []
@@ -50,20 +44,6 @@ function FewDaysForecast({index ,data, onChangeActive, activeDay}) {
         </div>
         )
     }
-
-    // function handleClick(e) {
-    //     if(e.currentTarget === activeDay){
-    //         e.currentTarget.classList.add('active')
-    //     } else {
-    //         e.currentTarget.classList.remove('active')
-    //     }
-        
-    // }
-    
-    // let list = [today, secondDay, thirdDay, fourthDay]
-    // list.map(l => {
-    //     console.log(l)
-    // })
 
 
 

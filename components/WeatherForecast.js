@@ -25,31 +25,30 @@ const CurrentInfo = styled.div`
 }
 `
 
-export default function WeatherForecast(){
+export default function WeatherForecast({props}){
 
     const [city, setCity] = useState('London')
-    const [data, setData] = useState(null)
-    const [activeDay, setActiveDay] = useState(null)
+    const [data, setData] = useState()
+    const [activeDay, setActiveDay] = useState(props.data.list[0].dt) // current date as default is active day
+    console.log(props.data)
 
-    useEffect(() => {
-
-        fetchData().then(data => setData(data));
-        
-    },[])
 
 
     console.log(city)
-    console.log(activeDay)
 
 
     return (
             <Container>
                  <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
-                    <CityInput setCity={setCity}/>
+                    <CityInput setCity={setCity} city={city}/>
                  <CurrentInfo>
-                    <CurrentSituation city={city} data={data} activeDay={activeDay}/>
-                    <SeveralDays data={data} onChangeActive={(value) => setActiveDay(value)} activeDay={activeDay}/>
+                    <CurrentSituation city={city} data={props.data} activeDay={activeDay}/>
+                    <SeveralDays data={props.data} onChangeActive={(value) => setActiveDay(value.currentTarget.id)}
+                    activeDay={activeDay}/>
                  </CurrentInfo>
             </Container>
     )
 }
+
+
+

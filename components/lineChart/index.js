@@ -1,7 +1,6 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
-import {useState} from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import {useState ,useEffect} from 'react';
 
 ChartJS.register(LineElement, PointElement, LinearScale,CategoryScale, Title);
 
@@ -23,7 +22,7 @@ export default function LineChart({activeDay, data}){
     let currentTime = new Date((activeDay - 10800) * 1000).getHours();
 
     // console.log(currentTime, +activeDay)
-    while(index < mainIteration) {
+    while(index <= mainIteration) {
         if(index == mainIteration - 8){
             currentTime = currentTime
             arrOfHours.push(currentTime)
@@ -38,7 +37,7 @@ export default function LineChart({activeDay, data}){
     }
 
 
-    console.log(arrOfHours, arrOfTemprature)
+    // console.log(arrOfHours, arrOfTemprature)
 
     const [chartData, setChartData] = useState({
         labels: arrOfHours,

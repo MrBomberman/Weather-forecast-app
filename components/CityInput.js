@@ -12,11 +12,11 @@ const Input = styled.input`
     }
 `
 
-export default function CityInput({setCity}){
+export default function CityInput({setCity, city}){
 
     return (
         <>
-        Your city<Input onInput={(e) => setCity(e.target.value)} placeholder="type your city "></Input>
+        Your city<Input onInput={(e) => setCity(e.target.value)} placeholder="type your city " value={city}></Input>
         </>
     )
 }

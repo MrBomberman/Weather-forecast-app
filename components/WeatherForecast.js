@@ -30,11 +30,10 @@ export default function WeatherForecast({props}){
     const [city, setCity] = useState('London')
     const [data, setData] = useState()
     const [activeDay, setActiveDay] = useState(props.data.list[0].dt) // current date as default is active day
-    console.log(props.data)
+    // console.log(props.data)
 
 
 
-    console.log(city)
 
 
     return (

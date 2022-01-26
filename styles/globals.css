@@ -22,5 +22,7 @@ body {
 
 
 .active {
-  background-color: red;
+  color: white;
+  background-color: rgb(8, 130, 238);
+  border-radius: 10px;
 }

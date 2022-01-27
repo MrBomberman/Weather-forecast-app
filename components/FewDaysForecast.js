@@ -51,7 +51,7 @@ function FewDaysForecast({data, onChangeActive, activeDay}) {
             alt='image'/>
             break;
             case('Rain') : 
-            state = <Image src='https://cdn-icons.flaticon.com/png/512/1585/premium/1585379.png?token=exp=1643292861~hmac=5fb76791a00cf58936695a83438e6677
+            state = <Image src='https://cdn-icons.flaticon.com/png/512/1585/premium/1585379.png?token=exp=1643292861~hmac=5fb76791a00cf58936695a83438e6677'
             width={50}
             height={50}
             layout="fixed"

@@ -9,7 +9,7 @@ import rain from '../public/images/slight-rain.png';
 
 const Container = styled.div`
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
    `
 
 const AdditionalParams = styled.div`

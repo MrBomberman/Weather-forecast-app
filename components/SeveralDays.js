@@ -5,6 +5,7 @@ import LineChart from "./lineChart";
 
 const Container = styled.div`
     flex-direction: column;
+    font-size: 18px;
 `
 
 export default function SeveralDays({data, onChangeActive, activeDay}){

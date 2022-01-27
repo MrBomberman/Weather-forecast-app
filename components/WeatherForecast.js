@@ -6,9 +6,9 @@ import SeveralDays from "./SeveralDays"
 import fetchData from "../utils"
 
 const Container = styled.div`
-padding: 10px;
+margin: 200px auto;
+padding: 16px;
 width: 800px;
-height: 600px;
 background-color: #b4d2e7;
 border-radius: 14px;
 box-shadow: -3px -2px 36px -7px rgba(0,0,0,0.75);

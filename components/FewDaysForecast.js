@@ -1,11 +1,19 @@
 import styled from "styled-components";
+import Image from 'next/image'
 
 const Container = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
+    margin-top: 10px;
     > div {
+        transition-duration: 0.6s;
+        text-align: center;
         padding: 9px;
         cursor: pointer;
+    }
+    @media only screen and (max-width: 820px){
+        grid-template-columns: 2fr 2fr
     }
 
 `
@@ -33,6 +41,42 @@ function FewDaysForecast({data, onChangeActive, activeDay}) {
         } else {
             formatedDate = new Date(date).toString().slice(4,10)
         }
+
+        switch(state){
+            case('Clouds') : 
+            state = <Image src='/../public/images/cloud.png'
+            width={50}
+            height={50}
+            layout="fixed"
+            alt='image'/>
+            break;
+            case('Rain') : 
+            state = <Image src='/../public/images/slight-rain.png'
+            width={50}
+            height={50}
+            layout="fixed"
+            alt='image'/>
+            break;
+            case('Snow') : 
+            state = <Image src='/../public/images/snowfall.png'
+            width={50}
+            height={50}
+            layout="fixed"
+            alt='image'/>
+            break;
+            case('Clear') : 
+            state = <Image src='/../public/images/clear-sky.png'
+            width={50}
+            height={50}
+            layout="fixed"
+            alt='image'/>
+            break;
+            default :
+            state = state
+            break;
+        }
+
+        
 
         return (<div id={formatedDate}>
             <p>{formatedDate}</p>

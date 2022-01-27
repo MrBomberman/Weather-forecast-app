@@ -41,28 +41,9 @@ export default function LineChart({activeDay, data}){
     // console.log(arrOfHours, arrOfTemprature)
 
     const options = {
-        title: {
-            display: true,
-            text: 'Temprature'
-        },
-        tooltips: {
-          mode: 'index'
-        },
-        legend: {
-            position: 'bottom'
-        },
-        scales: {
-            xAxes: [{
-               gridLines: {
-                  display: false
-               }
-            }],
-            yAxes: [{
-               gridLines: {
-                  display: false
-               }
-            }]
-         }
+        onClick: (e) => {
+           console.log(e)
+        }
     }
 
     const [chartData, setChartData] = useState({
@@ -92,7 +73,6 @@ export default function LineChart({activeDay, data}){
                 '#4c86a8'
             ],
             borderWidth: 4,
-            
             }],
         })
     }, [activeDay])
@@ -100,6 +80,8 @@ export default function LineChart({activeDay, data}){
     // chartData.datasets[0].data.push(arrOfTemprature)
 
     return (
-        <Line className='lineChart' data={chartData} ref={lineRef}/>
+        <div>
+             <Line className='lineChart' data={chartData} options={options} ref={lineRef}/>
+        </div>
     )
 }

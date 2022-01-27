@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import CityInput from "./CityInput"
 import CurrentSituation from "./CurrentSituation"
-import SeveralDays from "./SeveralDays"
+import SeveralDaysBlock from "./SeveralDaysBlock"
 import fetchData from "../utils"
 
 const Container = styled.div`
@@ -45,7 +45,7 @@ export default function WeatherForecast({props}){
                     <CityInput setCity={setCity} city={city}/>
                  <CurrentInfo>
                     <CurrentSituation city={city} data={props.data} activeDay={activeDay}/>
-                    <SeveralDays data={props.data} onChangeActive={(value) => setActiveDay(value.currentTarget.id)}
+                    <SeveralDaysBlock data={props.data} onChangeActive={(value) => setActiveDay(value.currentTarget.id)}
                     activeDay={activeDay}/>
                  </CurrentInfo>
             </Container>

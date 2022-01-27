@@ -8,7 +8,7 @@ const Container = styled.div`
     font-size: 18px;
 `
 
-export default function SeveralDays({data, onChangeActive, activeDay}){
+export default function SeveralDaysBlock({data, onChangeActive, activeDay}){
 
     // const tempratureLine = useRef();
 

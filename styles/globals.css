@@ -26,5 +26,6 @@ body {
 }
 
 .lineChart {
+  border-radius: 10px;
   background-color: #fff;
 }

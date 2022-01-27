@@ -24,7 +24,7 @@ export default function SeveralDays({data, onChangeActive, activeDay}){
     return (
         <>  
         <Container>
-        <h4 style={{textAlign: 'center', marginTop: 0}}>Temperature</h4>
+        <h4 style={{textAlign: 'center', marginTop: 0}}>Temperature C&#176;</h4>
         <LineChart activeDay={activeDay} data={data}/>
             <FewDaysForecast data={data} onChangeActive={onChangeActive} activeDay={activeDay}/>
         </Container>

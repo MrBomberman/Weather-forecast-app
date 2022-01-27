@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import Image from 'next/image'
+import Image from 'next/image';
+import cloud from '../public/images/cloud.png';
+import clearSky from '../public/images/clear-sky.png';
+import snow from '../public/images/snowfall.png';
+import rain from '../public/images/slight-rain.png';
 
 const Container = styled.div`
     display: grid;
@@ -44,28 +48,28 @@ function FewDaysForecast({data, onChangeActive, activeDay}) {
 
         switch(state){
             case('Clouds') : 
-            state = <Image src='https://cdn-icons.flaticon.com/png/512/3222/premium/3222791.png?token=exp=1643286802~hmac=39739637c9e86d4f4b81fd82f944c168'
+            state = <Image src={cloud}
             width={50}
             height={50}
             layout="fixed"
             alt='image'/>
             break;
             case('Rain') : 
-            state = <Image src='https://cdn-icons.flaticon.com/png/512/1585/premium/1585379.png?token=exp=1643292861~hmac=5fb76791a00cf58936695a83438e6677'
+            state = <Image src={rain}
             width={50}
             height={50}
             layout="fixed"
             alt='image'/>
             break;
             case('Snow') : 
-            state = <Image src='https://cdn-icons.flaticon.com/png/512/2465/premium/2465979.png?token=exp=1643292806~hmac=54fbc504fee48f812de037997079d392'
+            state = <Image src={snow}
             width={50}
             height={50}
             layout="fixed"
             alt='image'/>
             break;
             case('Clear') : 
-            state = <Image src='https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1643292766~hmac=c2bee347a54e38974b899d43caa9ac17'
+            state = <Image src={clearSky}
             width={50}
             height={50}
             layout="fixed"

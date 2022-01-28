@@ -26,15 +26,20 @@ const WeatherState = styled.div`
     justify-content: center;
 `
 
+const CurrentState = styled.span`
+    font-weight: 550;
+`
+
 export default function CurrentSituation({data}){
+
 
     const [weather, setMainWeather] = useState(null)
 
-    let mainCurrentWeather = data === null ? 'Loading...' :  data.list[0].weather[0].main;
-    let currentHumidity = data === null ? 'Loading...' : data.list[0].main.humidity + '%';
-    let currentWind = data === null ? 'Loading...' : data.list[0].wind.speed + 'km/j'
+    let mainCurrentWeather = data.list[0].weather[0].main;
+    let currentHumidity = data.list[0].main.humidity + '%';
+    let currentWind = data.list[0].wind.speed + 'km/j'
 
-    let temprature = Math.round(data.list[0].main.temp - 273.15);
+    let temprature = Math.round(data.list[0].main.feels_like - 273.15);
 
     switch(mainCurrentWeather){
         case('Clouds') : 
@@ -77,11 +82,11 @@ export default function CurrentSituation({data}){
                 <h4>{`Now`}</h4>
                 <WeatherState>
                     <div>{mainCurrentWeather}</div>
-                    <div style={{}}>{temprature}C&#176;</div>
+                    <div style={{paddingLeft: 10, fontWeight: 600}}>{temprature}C&#176;</div>
                 </WeatherState>
                 <AdditionalParams>
-                    <div>Humidity: <span>{currentHumidity}</span></div>
-                    <div>Wind: <span>{currentWind}</span></div>
+                    <div>Humidity: <CurrentState>{currentHumidity}</CurrentState></div>
+                    <div>Wind: <CurrentState>{currentWind}</CurrentState></div>
                 </AdditionalParams>
             </Container>
         </>

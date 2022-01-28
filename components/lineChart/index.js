@@ -14,7 +14,7 @@ export default function LineChart({activeDay, data}){
     const arrOfHours = [];
     const arrOfTemprature = [];
     for (let i = 0; i < data.list.length; i++){ // calculate index to find start point of active day to show 
-        // the forecast every 3 hours for this day
+        // the forecast every 6 hours for this day
         if(data.list[i].dt == +activeDay){
             index = index + i
         }
@@ -23,17 +23,18 @@ export default function LineChart({activeDay, data}){
     let currentTime = new Date((activeDay - 10800) * 1000).getHours();
 
     // console.log(currentTime, +activeDay)
+    // one index = 3 hours
     while(index <= mainIteration) {
         if(index == mainIteration - 8){
             currentTime = currentTime
             arrOfHours.push(currentTime+':00')
-            arrOfTemprature.push(Math.round(data.list[index].main.temp - 273.15)) // convert from kelvin to celcius
+            arrOfTemprature.push(Math.round(data.list[index].main.feels_like - 273.15)) // convert from kelvin to celcius
             index = index + 2
         }
-        currentTime = currentTime + 6 ; // every 3 hours
+        currentTime = currentTime + 6 ; // every 6 hours
         currentTime = currentTime >= 24 ? currentTime - 24 : currentTime // checks if 24 hours - convert to 0:00
         arrOfHours.push(currentTime+':00')
-        arrOfTemprature.push(Math.round(data.list[index].main.temp - 273.15))
+        arrOfTemprature.push(Math.round(data.list[index].main.feels_like - 273.15))
         index = index + 2
     }
 

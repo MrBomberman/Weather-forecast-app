@@ -6,7 +6,7 @@ import SeveralDaysBlock from "./SeveralDaysBlock"
 import fetchData from "../utils"
 
 const Container = styled.div`
-margin: 200px auto;
+margin: 190px auto;
 overflow-y: auto;
 padding: 16px;
 width: 800px;
@@ -18,6 +18,10 @@ box-shadow: -3px -2px 36px -7px rgba(0,0,0,0.75);
 @media only screen and (max-width: 820px){
 margin: 40px auto;
 width: 340px;
+
+@media only screen and (max-height: 860px){
+    margin: 90px auto
+}
 }
 `
 const CurrentInfo = styled.div`

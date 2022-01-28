@@ -28,8 +28,11 @@ export default function Home() {
         
     })
   },[])
-  
-  return data === undefined ? 'Loading...' : (
+
+  // data === undefined ?   
+  return data === undefined ?  <div className="loadingio-spinner-dual-ball-yr9qitepzf"><div className="ldio-wc4ckuxa3y">
+  <div></div><div></div><div></div>
+  </div></div> : (
     <>
       <WeatherForecast data={data} currentLocation={currentLocation}/>
     </>

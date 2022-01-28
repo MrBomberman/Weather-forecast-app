@@ -21,7 +21,7 @@ export default function Home() {
           .then(resPosition => {
             let currentCity = resPosition.results[0].address_components[2].long_name;
             setCity(currentCity);
-            return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=2061b3a9d510a4c514ba1b661d445337`)
+            return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=2061b3a9d510a4c514ba1b661d445337`)
           })
           .then(res => res.json())
           .then(result => setData(result))

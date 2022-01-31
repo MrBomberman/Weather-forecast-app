@@ -4,6 +4,7 @@ import cloud from '../public/images/cloud.png';
 import clearSky from '../public/images/clear-sky.png';
 import snow from '../public/images/snowfall.png';
 import rain from '../public/images/slight-rain.png';
+import { Temporal, Intl, toTemporalInstant } from '@js-temporal/polyfill';
 
 const Container = styled.div`
     display: grid;
@@ -44,7 +45,9 @@ function FewDaysForecast({data, onChangeActive, activeDay}) {
         if (date === data.list[0].dt_txt) {
             formatedDate = 'Today'
         } else {
-            formatedDate = new Date(date).toString().slice(4,10)
+            const instant = Temporal.Instant.from(date.replace(" ", "T") + "Z");
+            const dt = new Date(instant.epochMilliseconds)
+            formatedDate =  dt.toString().slice(4,10);
         }
 
         switch(state){

@@ -50,6 +50,8 @@ export default function WeatherForecast({data, currentLocation}){
         }
     }, [currentLocation])
 
+    console.log(data)
+
 
 
     return (

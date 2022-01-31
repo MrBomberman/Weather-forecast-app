@@ -15,6 +15,7 @@ const Container = styled.div`
 const AdditionalParams = styled.div`
     display: flex;
     padding: 10px;
+    justify-content: center;
     > div {
         padding: 10px
     }

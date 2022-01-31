@@ -24,6 +24,9 @@ box-shadow: -3px -2px 36px -7px rgba(0,0,0,0.75);
 @media only screen and (max-width: 560px){
     width: 320px; 
     }
+@media only screen and (max-height: 668px){
+    height: 500px;
+    }
 `
 const CurrentInfo = styled.div`
     display: flex;

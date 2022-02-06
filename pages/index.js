@@ -19,18 +19,12 @@ export default function Home() {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${crd.latitude},${crd.longitude}&key=${API_KEY}&language=en`)
           .then(resPosition => resPosition.json())
           .then(resPosition => {
-            let currentCity = ''
-            let parts = resPosition.results[0].address_components;
-            parts.forEach(part => {
-              if(part.types[0] == 'locality'){
-                setCity(part.long_name);
-                currentCity = part.long_name;
-              }
-            })
-            if (currentCity == '') {
-              setCity('Moscow');
-              currentCity = 'Moscow'
-            }
+            let currentAddress = resPosition.plus_code.compound_code;
+            let firstSpace = currentAddress.indexOf(' ');
+            let firstComma = currentAddress.indexOf(',')
+            let currentCity = currentAddress.slice(firstSpace+1,firstComma);
+            setCity(currentCity)
+
             return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=2061b3a9d510a4c514ba1b661d445337`)
           })
           .then(res => res.json())

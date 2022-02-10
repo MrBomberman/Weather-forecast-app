@@ -4,6 +4,7 @@ import CityInput from "./CityInput"
 import CurrentSituation from "./CurrentSituation"
 import SeveralDaysBlock from "./SeveralDaysBlock"
 import fetchData from "../utils"
+import ErrorLoader from "./loaders/ErrorLoader"
 
 const Container = styled.div`
 position: absolute;
@@ -57,9 +58,8 @@ export default function WeatherForecast({data, currentLocation, textError}){
         }
     }, [currentLocation])
 
-    console.log(data)
 
-    if(textError == '') {
+    if(textError == undefined) {
         return (
             <Container>
                 <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
@@ -77,7 +77,7 @@ export default function WeatherForecast({data, currentLocation, textError}){
         return (
             <Container>
                 <ErrorText>{textError}</ErrorText>
-                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <ErrorLoader/>
             </Container>
         ) 
     }

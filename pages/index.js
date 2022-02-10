@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import MainPageLoader from '../components/loaders/MainPageLoader';
 import WeatherForecast from '../components/WeatherForecast';
 import fetchData from '../utils';
 
@@ -27,11 +28,11 @@ export default function Home() {
               let currentCity = currentAddress.slice(firstSpace+1,firstComma);
               setCity(currentCity)
   
-              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Konkovo&appid=2061b3a9d510a4c514ba1b661d445337`)
+              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=2061b3a9d510a4c514ba1b661d445337`)
           })
           .then(res => res.json())
           .then(result => {
-            if(result.ok){
+            if(result.cod == '200'){
               setData(result)
               setLoading(false)
             } else {
@@ -46,10 +47,10 @@ export default function Home() {
     })
   },[])
 
+
+
   if (loading == true) {
-    return (<div className="loadingio-spinner-dual-ball-yr9qitepzf"><div className="ldio-wc4ckuxa3y">
-    <div></div><div></div><div></div>
-    </div></div>)
+    return (<MainPageLoader/>)
   } else {
     if (textError != ''){
       return (
@@ -65,14 +66,5 @@ export default function Home() {
       )
     }
   }
-
-  // data === undefined ?   
-  // return data === undefined ? (<div className="loadingio-spinner-dual-ball-yr9qitepzf"><div className="ldio-wc4ckuxa3y">
-  // <div></div><div></div><div></div>
-  // </div></div>) : (
-  //   <>
-  //     <WeatherForecast data={data} currentLocation={currentLocation}/>
-  //   </>
-  // )
 }
 

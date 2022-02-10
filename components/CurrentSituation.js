@@ -38,7 +38,7 @@ export default function CurrentSituation({data}){
 
     let mainCurrentWeather = data.list[0].weather[0].main;
     let currentHumidity = data.list[0].main.humidity + '%';
-    let currentWind = data.list[0].wind.speed + 'km/j'
+    let currentWind = data.list[0].wind.speed + 'km/h'
 
     let temprature = Math.round(data.list[0].main.feels_like - 273.15);
 

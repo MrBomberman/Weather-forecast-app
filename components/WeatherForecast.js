@@ -36,7 +36,14 @@ const CurrentInfo = styled.div`
 }
 `
 
-export default function WeatherForecast({data, currentLocation}){
+const ErrorText = styled.h1`
+    position: relative;
+    top: 30%;
+    transform: translateY(-50%);
+    color: white;
+`
+
+export default function WeatherForecast({data, currentLocation, textError}){
 
     const [city, setCity] = useState('')
     const [activeDay, setActiveDay] = useState() // current date as default is active day
@@ -52,11 +59,10 @@ export default function WeatherForecast({data, currentLocation}){
 
     console.log(data)
 
-
-
-    return (
+    if(textError == '') {
+        return (
             <Container>
-                 <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
+                <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
                     <CityInput setCity={setCity} city={city}/>
                  <CurrentInfo>
                     <CurrentSituation city={city} data={data}  />
@@ -66,7 +72,15 @@ export default function WeatherForecast({data, currentLocation}){
                     />
                  </CurrentInfo>
             </Container>
-    )
+        )
+    } else {
+        return (
+            <Container>
+                <ErrorText>{textError}</ErrorText>
+                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </Container>
+        ) 
+    }
 }
 
 

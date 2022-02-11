@@ -8,7 +8,7 @@ const Container = styled.div`
     font-size: 18px;
 `
 
-export default function SeveralDaysBlock({data, onChangeActive, activeDay}){
+export default function SeveralDaysBlock({data, onChangeActive, activeDay, city}){
 
     // const tempratureLine = useRef();
 
@@ -26,7 +26,7 @@ export default function SeveralDaysBlock({data, onChangeActive, activeDay}){
         <>  
         <Container>
         <h4 style={{textAlign: 'center', marginTop: 0}}>Temperature C&#176;</h4>
-        <LineChart activeDay={activeDay} data={data}/>
+        <LineChart activeDay={activeDay} data={data} city={city}/>
             <FewDaysForecast data={data} onChangeActive={onChangeActive} activeDay={activeDay}/>
         </Container>
         </>

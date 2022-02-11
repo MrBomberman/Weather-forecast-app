@@ -28,10 +28,11 @@ export default function Home() {
               let currentCity = currentAddress.slice(firstSpace+1,firstComma);
               setCity(currentCity)
   
-              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&appid=2061b3a9d510a4c514ba1b661d445337`)
+              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Moscow&appid=2061b3a9d510a4c514ba1b661d445337`)
           })
           .then(res => res.json())
           .then(result => {
+            console.log('Result:', result)
             if(result.cod == '200'){
               setData(result)
               setLoading(false)
@@ -61,7 +62,8 @@ export default function Home() {
     } else {
       return (
             <>
-              <WeatherForecast data={data} currentLocation={currentLocation}/>
+              <WeatherForecast data={data} currentLocation={currentLocation} setCity={setCity} 
+              setData={setData} />
             </>
       )
     }

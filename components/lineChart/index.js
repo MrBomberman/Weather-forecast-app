@@ -5,7 +5,7 @@ import {useRef} from 'react';
 
 ChartJS.register(LineElement, PointElement, LinearScale,CategoryScale, Title);
 
-export default function LineChart({activeDay, data}){
+export default function LineChart({activeDay, data, city}){
     const lineRef = useRef();
     // Create a new JavaScript Date object based on the timestamp
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.

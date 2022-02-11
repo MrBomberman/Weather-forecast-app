@@ -4,7 +4,8 @@ import CityInput from "./CityInput"
 import CurrentSituation from "./CurrentSituation"
 import SeveralDaysBlock from "./SeveralDaysBlock"
 import fetchData from "../utils"
-import ErrorLoader from "./loaders/ErrorLoader"
+import ErrorLoader from "./loaders/ErrorLoader";
+import InfoLoader from "./loaders/InfoLoader";
 
 const Container = styled.div`
 position: absolute;
@@ -44,10 +45,18 @@ const ErrorText = styled.h1`
     color: white;
 `
 
-export default function WeatherForecast({data, currentLocation, textError}){
+const DivLoader = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 135px;
+`
 
-    const [city, setCity] = useState('')
+export default function WeatherForecast({data, currentLocation, textError, setCity, setData}){
+
+    // const [city, setCity] = useState('')
     const [activeDay, setActiveDay] = useState() // current date as default is active day
+    const [errorMsg , setErorrMsg] = useState('')
 
     useEffect(() => {
         if(data != undefined){
@@ -56,21 +65,29 @@ export default function WeatherForecast({data, currentLocation, textError}){
         if(currentLocation != undefined){
             setCity(currentLocation)
         }
-    }, [currentLocation])
-
+    }, [])
+    console.log(data)
 
     if(textError == undefined) {
-        return (
+        return data == undefined ?          
+        <Container>
+        <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
+            <CityInput setCity={setCity} city={currentLocation} setData={setData}
+             errorMsg={errorMsg} setErorrMsg={setErorrMsg}/>
+             <DivLoader><InfoLoader/></DivLoader>
+        </Container>
+        :  (
             <Container>
                 <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
-                    <CityInput setCity={setCity} city={city}/>
-                 <CurrentInfo>
-                    <CurrentSituation city={city} data={data}  />
-                    <SeveralDaysBlock data={data}
-                         onChangeActive={(value) => setActiveDay(value.currentTarget.id)}
-                         activeDay={activeDay}
-                    />
-                 </CurrentInfo>
+                    <CityInput setCity={setCity} city={currentLocation} setData={setData}
+                     errorMsg={errorMsg} setErorrMsg={setErorrMsg}/>
+                <CurrentInfo>
+                <CurrentSituation data={data} city={currentLocation} />
+                <SeveralDaysBlock data={data}
+                    onChangeActive={(value) => setActiveDay(value.currentTarget.id)}
+                    activeDay={activeDay} city={currentLocation}
+                />
+                </CurrentInfo>
             </Container>
         )
     } else {

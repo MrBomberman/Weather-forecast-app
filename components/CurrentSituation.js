@@ -31,7 +31,7 @@ const CurrentState = styled.span`
     font-weight: 550;
 `
 
-export default function CurrentSituation({data}){
+export default function CurrentSituation({data, city}){
 
 
     const [weather, setMainWeather] = useState(null)
@@ -75,12 +75,16 @@ export default function CurrentSituation({data}){
         mainCurrentWeather = mainCurrentWeather
         break;
     }
+    
+    // useEffect((city) => {
+    //     city = city
+    // }, [city])
 
     return (
         <>
             <Container>
                 <CurrentTime/>
-                <h4>{`Now`}</h4>
+                <h4>{`Now in ${city}`}</h4>
                 <WeatherState>
                     <div>{mainCurrentWeather}</div>
                     <div style={{paddingLeft: 10, fontWeight: 600}}>{temprature}C&#176;</div>

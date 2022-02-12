@@ -10,7 +10,7 @@ const Input = styled.input`
     &:hover {
         background-color: #ebebeb;
     }
-    @media only screen and (max-width: 560px){
+@media only screen and (max-width: 560px){
         font-size: 16px; 
         }
 `
@@ -24,8 +24,8 @@ const Button = styled.button`
         color: #fff;
         background-color: #95b8d1;
     }
-    @media only screen and (max-width: 560px){
-        font-size: 16px; 
+@media only screen and (max-width: 560px){
+        font-size: 14px; 
         }
 `
 

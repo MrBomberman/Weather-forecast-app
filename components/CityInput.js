@@ -39,7 +39,19 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
             setCity(city)
             fetchData(city)
         }
+        if(event.key === 'Space'){
+
+        }
       }
+
+
+    function handleInput(e){
+        const firstElem = e.target.value[0];
+        if(firstElem === ' '){
+            e.target.value = ''
+        }
+        
+    }
 
     function fetchData(city) {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=2061b3a9d510a4c514ba1b661d445337`)
@@ -60,7 +72,9 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
     return (
         <>
         Your city<div>
-        <Input ref={refCity}  placeholder="type your city " 
+        <Input ref={refCity} 
+        onInput={(e) => handleInput(e)}
+        placeholder="type your city " 
         onKeyDown={(e) => handleKeyDown(e, city)} ></Input>
         <Button onClick={() => {
             city = refCity.current.value;

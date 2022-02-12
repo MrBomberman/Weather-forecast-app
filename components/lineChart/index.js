@@ -22,20 +22,19 @@ export default function LineChart({activeDay, data, city}){
     let mainIteration = index + 8; // main index plus 8 points to show forecast for a whole day
     let currentTime = new Date((activeDay - 10800) * 1000).getHours();
 
-    // console.log(currentTime, +activeDay)
     // one index = 3 hours
     while(index <= mainIteration) {
         if(index == mainIteration - 8){
             currentTime = currentTime
             arrOfHours.push(currentTime+':00')
             arrOfTemprature.push(Math.round(data.list[index].main.feels_like - 273.15)) // convert from kelvin to celcius
-            index = index + 2
+            index = index + 1
         }
-        currentTime = currentTime + 6 ; // every 6 hours
+        currentTime = currentTime + 3 ; // every 6 hours
         currentTime = currentTime >= 24 ? currentTime - 24 : currentTime // checks if 24 hours - convert to 0:00
         arrOfHours.push(currentTime+':00')
         arrOfTemprature.push(Math.round(data.list[index].main.feels_like - 273.15))
-        index = index + 2
+        index = index + 1
     }
 
 
@@ -57,7 +56,7 @@ export default function LineChart({activeDay, data, city}){
         borderColor: [
             '#4c86a8'
         ],
-        borderWidth: 4,
+        borderWidth: 3,
         
         }],
     });
@@ -73,7 +72,7 @@ export default function LineChart({activeDay, data, city}){
             borderColor: [
                 '#4c86a8'
             ],
-            borderWidth: 4,
+            borderWidth: 3,
             }],
         })
     }, [activeDay])

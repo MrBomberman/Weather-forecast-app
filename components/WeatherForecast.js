@@ -65,8 +65,7 @@ export default function WeatherForecast({data, currentLocation, textError, setCi
         if(currentLocation != undefined){
             setCity(currentLocation)
         }
-    }, [])
-    console.log(data)
+    }, [data])
 
     if(textError == undefined) {
         return data == undefined ?          

@@ -10,6 +10,9 @@ const Input = styled.input`
     &:hover {
         background-color: #ebebeb;
     }
+    @media only screen and (max-width: 560px){
+        font-size: 16px; 
+        }
 `
 const Button = styled.button`
     margin-left: 10px;
@@ -21,11 +24,22 @@ const Button = styled.button`
         color: #fff;
         background-color: #95b8d1;
     }
+    @media only screen and (max-width: 560px){
+        font-size: 16px; 
+        }
 `
 
 export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg}){
 
     const refCity = useRef();
+
+    function handleKeyDown (event, city) {
+        if (event.key === 'Enter') {
+            city = refCity.current.value;
+            setCity(city)
+            fetchData(city)
+        }
+      }
 
     function fetchData(city) {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=2061b3a9d510a4c514ba1b661d445337`)
@@ -33,8 +47,6 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
         .then(result => {
             if(result.cod == '200') {
                 setErorrMsg('')
-                city = refCity.current.value
-                setCity(city)
                 setData(result)
             } else {
                 setErorrMsg('Type your city correctly')
@@ -48,7 +60,8 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
     return (
         <>
         Your city<div>
-        <Input ref={refCity}  placeholder="type your city " ></Input>
+        <Input ref={refCity}  placeholder="type your city " 
+        onKeyDown={(e) => handleKeyDown(e, city)} ></Input>
         <Button onClick={() => {
             city = refCity.current.value;
             setCity(city)

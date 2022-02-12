@@ -28,6 +28,7 @@ body {
 .lineChart {
   border-radius: 10px;
   background-color: #fff;
+  padding: 2px;
 }
 
 /* loader for main page */

@@ -86,14 +86,16 @@ export default function WeatherForecast({data, currentLocation, mainError, setCi
         <Container>
         <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
             <CityInput setCity={setCity} city={currentLocation} setData={setData}
-             errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}/>
+             errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}
+             setMainError={setMainError}/>
              <DivLoader><InfoLoader/></DivLoader>
         </Container>
         :  (
             <Container>
                 <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
                     <CityInput setCity={setCity} city={currentLocation} setData={setData}
-                     errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}/>
+                     errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}
+                     setMainError={setMainError}/>
                 <CurrentInfo>
                 <CurrentSituation data={data} city={currentLocation} />
                 <SeveralDaysBlock data={data}

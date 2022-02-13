@@ -10,7 +10,7 @@ export default function Home() {
   const [currentLocation, setCity] = useState('')
   const [data , setData] = useState();
   const [loading, setLoading] = useState(true);
-  const [textError, setTextError] = useState('');
+  const [mainError, setMainError] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -28,7 +28,7 @@ export default function Home() {
               let currentCity = currentAddress.slice(firstSpace+1,firstComma);
               setCity(currentCity)
   
-              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Moscow&appid=2061b3a9d510a4c514ba1b661d445337`)
+              return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Moscvnsvnsdjvknow&appid=2061b3a9d510a4c514ba1b661d445337`)
           })
           .then(res => res.json())
           .then(result => {
@@ -37,7 +37,7 @@ export default function Home() {
               setData(result)
               setLoading(false)
             } else {
-              setTextError(`Can't find weather data for your current position`)
+              setMainError(`Can't find weather data for your current position`)
               setLoading(false)
             }
           })
@@ -53,10 +53,11 @@ export default function Home() {
   if (loading == true) {
     return (<MainPageLoader/>)
   } else {
-    if (textError != ''){
+    if (mainError != ''){
       return (
         <>
-          <WeatherForecast textError={textError}/>
+          <WeatherForecast mainError={mainError} currentLocation={currentLocation}
+          setCity={setCity} setData={setData} setMainError={setMainError}/>
         </> 
       )
     } else {

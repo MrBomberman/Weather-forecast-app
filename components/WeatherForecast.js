@@ -52,11 +52,24 @@ const DivLoader = styled.div`
     margin-top: 135px;
 `
 
-export default function WeatherForecast({data, currentLocation, textError, setCity, setData}){
+const ErrorCityInput = styled.div`
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    top: 30%;
+
+@media only screen and (max-width: 820px){
+    display: flex;
+    flex-direction: column;
+}
+`
+
+export default function WeatherForecast({data, currentLocation, mainError, setCity, setData, setMainError}){
 
     // const [city, setCity] = useState('')
     const [activeDay, setActiveDay] = useState() // current date as default is active day
-    const [errorMsg , setErorrMsg] = useState('')
+    const [errorMsgCity , setErorrMsgCity] = useState('')
 
     useEffect(() => {
         if(data != undefined){
@@ -66,20 +79,21 @@ export default function WeatherForecast({data, currentLocation, textError, setCi
             setCity(currentLocation)
         }
     }, [data])
+    console.log(data)
 
-    if(textError == undefined) {
+    if(mainError == undefined) {
         return data == undefined ?          
         <Container>
         <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
             <CityInput setCity={setCity} city={currentLocation} setData={setData}
-             errorMsg={errorMsg} setErorrMsg={setErorrMsg}/>
+             errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}/>
              <DivLoader><InfoLoader/></DivLoader>
         </Container>
         :  (
             <Container>
                 <h1 style={{textAlign: 'center'}}>Weather forecast</h1>   
                     <CityInput setCity={setCity} city={currentLocation} setData={setData}
-                     errorMsg={errorMsg} setErorrMsg={setErorrMsg}/>
+                     errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}/>
                 <CurrentInfo>
                 <CurrentSituation data={data} city={currentLocation} />
                 <SeveralDaysBlock data={data}
@@ -92,7 +106,13 @@ export default function WeatherForecast({data, currentLocation, textError, setCi
     } else {
         return (
             <Container>
-                <ErrorText>{textError}</ErrorText>
+                <ErrorText>{mainError}</ErrorText>
+                <ErrorCityInput>
+                <CityInput setCity={setCity} city={currentLocation} setData={setData}
+                     errorMsgCity={errorMsgCity} setErorrMsgCity={setErorrMsgCity}
+                     setMainError={setMainError}/>
+                </ErrorCityInput>
+
                 <ErrorLoader/>
             </Container>
         ) 

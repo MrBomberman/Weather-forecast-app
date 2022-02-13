@@ -29,7 +29,7 @@ const Button = styled.button`
         }
 `
 
-export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg}){
+export default function CityInput({setCity, city, setData, errorMsgCity, setErorrMsgCity, setMainError}){
 
     const refCity = useRef();
 
@@ -39,9 +39,6 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
             setCity(city)
             fetchData(city)
         }
-        if(event.key === 'Space'){
-
-        }
       }
 
 
@@ -50,18 +47,19 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
         if(firstElem === ' '){
             e.target.value = ''
         }
-        
     }
+    console.log(city)
 
     function fetchData(city) {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=2061b3a9d510a4c514ba1b661d445337`)
         .then(res => res.json())
         .then(result => {
             if(result.cod == '200') {
-                setErorrMsg('')
+                setErorrMsgCity('')
                 setData(result)
+                setMainError('')
             } else {
-                setErorrMsg('Type your city correctly')
+                setErorrMsgCity('Type your city correctly')
                 setCity('')
                 setData(undefined)
             }
@@ -71,18 +69,18 @@ export default function CityInput({setCity, city, setData, errorMsg, setErorrMsg
 
     return (
         <>
-        Your city<div>
+        <div style={{marginBottom: '5px'}}>Your city</div><div>
         <Input ref={refCity} 
-        onInput={(e) => handleInput(e)}
-        placeholder="type your city " 
-        onKeyDown={(e) => handleKeyDown(e, city)} ></Input>
+        onInput={(e) => handleInput(e)} 
+        onKeyDown={(e) => handleKeyDown(e, city)}
+        placeholder="type your city " ></Input>
         <Button onClick={() => {
             city = refCity.current.value;
             setCity(city)
             fetchData(city)
         }}>Find</Button>
         </div>
-        <div>{errorMsg}</div>
+        <div>{errorMsgCity}</div>
         </>
     )
 }

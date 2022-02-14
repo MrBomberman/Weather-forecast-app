@@ -48,7 +48,7 @@ export default function CityInput({setCity, city, setData, errorMsgCity, setEror
             e.target.value = ''
         }
     }
-    console.log(city)
+    // console.log(city)
 
     function fetchData(city) {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=2061b3a9d510a4c514ba1b661d445337`)

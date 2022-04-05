@@ -29,6 +29,11 @@ box-shadow: -3px -2px 36px -7px rgba(0,0,0,0.75);
 @media only screen and (max-height: 668px){
     height: 500px;
     }
+@media only screen and (max-width: 430px){
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    }
 `
 const CurrentInfo = styled.div`
     display: flex;

@@ -28,6 +28,11 @@ const Button = styled.button`
         font-size: 14px; 
         }
 `
+const DivInput = styled.div`
+@media only screen and (max-width: 560px){
+    text-align: center;
+    }    
+`
 
 export default function CityInput({setCity, city, setData, errorMsgCity, setErorrMsgCity, setMainError}){
 
@@ -69,17 +74,18 @@ export default function CityInput({setCity, city, setData, errorMsgCity, setEror
 
     return (
         <>
-        <div style={{marginBottom: '5px'}}>Your city</div><div>
-        <Input ref={refCity} 
-        onInput={(e) => handleInput(e)} 
-        onKeyDown={(e) => handleKeyDown(e, city)}
-        placeholder="type your city " ></Input>
-        <Button onClick={() => {
-            city = refCity.current.value;
-            setCity(city)
-            fetchData(city)
-        }}>Find</Button>
-        </div>
+        <div style={{marginBottom: '5px'}}>Your city</div>
+            <DivInput>
+            <Input ref={refCity} 
+                onInput={(e) => handleInput(e)} 
+                onKeyDown={(e) => handleKeyDown(e, city)}
+                placeholder="type your city " ></Input>
+                <Button onClick={() => {
+                    city = refCity.current.value;
+                    setCity(city)
+                    fetchData(city)
+                }}>Find</Button>
+            </DivInput>
         <div>{errorMsgCity}</div>
         </>
     )
